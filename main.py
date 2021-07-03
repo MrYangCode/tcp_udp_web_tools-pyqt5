@@ -30,6 +30,7 @@ class MainWindow(tcp_logic.TcpLogic, udp_logic.UdpLogic, web_logic.WebLogic):
         self.pushButton_dir.clicked.connect(self.click_dir)
         self.pushButton_exit.clicked.connect(self.close)
         self.pushButton_else.clicked.connect(self.another_window)
+        # self.pushButton_hex.clicked.connect(self.click_hex)
 
     def click_link(self):
         """
@@ -50,6 +51,12 @@ class MainWindow(tcp_logic.TcpLogic, udp_logic.UdpLogic, web_logic.WebLogic):
         self.link = True
         self.pushButton_unlink.setEnabled(True)
         self.pushButton_link.setEnabled(False)
+
+    def click_hex(self):
+        if self.pushButton_hex.isChecked():
+            self.setWindowTitle(u'选中成功')
+        else:
+            self.setWindowTitle(u'选中未成功')
 
     def click_unlink(self):
         """

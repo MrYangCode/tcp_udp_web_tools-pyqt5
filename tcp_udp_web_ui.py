@@ -17,7 +17,7 @@ class ToolsUi(QDialog):
         self._translate = QtCore.QCoreApplication.translate
 
         self.setObjectName("TCP-UDP")
-        self.resize(640, 480)
+        self.resize(740, 680)
         self.setAcceptDrops(False)
         self.setSizeGripEnabled(False)
 
@@ -43,12 +43,17 @@ class ToolsUi(QDialog):
         self.textEdit_send = QtWidgets.QTextEdit()
         self.textBrowser_recv = QtWidgets.QTextBrowser()
         self.comboBox_tcp = QtWidgets.QComboBox()
+        # hex
+        self.pushButton_hex = QtWidgets.QCheckBox()
+        # 下拉选项
+        self.pushButton_hex_select = QtWidgets.QComboBox()
 
         # 定义布局
         self.h_box_1 = QHBoxLayout()
         self.h_box_2 = QHBoxLayout()
         self.h_box_3 = QHBoxLayout()
         self.h_box_4 = QHBoxLayout()
+        self.h_box_5 = QHBoxLayout()
         self.h_box_recv = QHBoxLayout()
         self.h_box_exit = QHBoxLayout()
         self.h_box_all = QHBoxLayout()
@@ -65,6 +70,16 @@ class ToolsUi(QDialog):
         self.comboBox_tcp.addItem("")
         self.comboBox_tcp.addItem("")
         self.comboBox_tcp.addItem("")
+
+        # hex 选择框功能下拉菜单
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
+        self.pushButton_hex_select.addItem("")
 
         # 设置字体
         font = QtGui.QFont()
@@ -109,10 +124,13 @@ class ToolsUi(QDialog):
         self.h_box_4.addWidget(self.comboBox_tcp)
         self.h_box_4.addWidget(self.pushButton_link)
         self.h_box_4.addWidget(self.pushButton_unlink)
+        self.h_box_5.addWidget(self.pushButton_hex)
+        self.h_box_5.addWidget(self.pushButton_hex_select)
         self.v_box_set.addLayout(self.h_box_1)
         self.v_box_set.addLayout(self.h_box_2)
         self.v_box_set.addLayout(self.h_box_3)
         self.v_box_set.addLayout(self.h_box_4)
+        self.v_box_set.addLayout(self.h_box_5)
         self.v_box_web.addWidget(self.label_dir)
         self.v_box_web.addWidget(self.pushButton_dir)
         self.v_box_send.addWidget(self.label_send)
@@ -154,6 +172,7 @@ class ToolsUi(QDialog):
         self.comboBox_tcp.setItemText(3, self._translate("TCP-UDP", "UDP客户端"))
         self.comboBox_tcp.setItemText(4, self._translate("TCP-UDP", "WEB服务端"))
         self.pushButton_link.setText(self._translate("TCP-UDP", "连接网络"))
+        self.pushButton_hex.setText(self._translate("TCP-UDP", "hex"))
         self.pushButton_unlink.setText(self._translate("TCP-UDP", "断开网络"))
         self.pushButton_get_ip.setText(self._translate("TCP-UDP", "重新获取IP"))
         self.pushButton_clear.setText(self._translate("TCP-UDP", "清除消息"))
@@ -167,7 +186,15 @@ class ToolsUi(QDialog):
         self.label_rev.setText(self._translate("TCP-UDP", "接收区域"))
         self.label_send.setText(self._translate("TCP-UDP", "发送区域"))
         self.label_dir.setText(self._translate("TCP-UDP", "请选择index.html所在的文件夹"))
-        self.label_written.setText(self._translate("TCP-UDP", "Written by Wangler2333"))
+        self.label_written.setText(self._translate("TCP-UDP", "Written by "))
+        self.pushButton_hex_select.setItemText(0, self._translate("TCP-UDP", "None"))
+        self.pushButton_hex_select.setItemText(1, self._translate("TCP-UDP", "ModbusCRC16"))
+        self.pushButton_hex_select.setItemText(2, self._translate("TCP-UDP", "CCITT-CRC16"))
+        self.pushButton_hex_select.setItemText(3, self._translate("TCP-UDP", "CRC32"))
+        self.pushButton_hex_select.setItemText(4, self._translate("TCP-UDP", "ADD8"))
+        self.pushButton_hex_select.setItemText(5, self._translate("TCP-UDP", "ADD8"))
+        self.pushButton_hex_select.setItemText(6, self._translate("TCP-UDP", "XOR8"))
+        self.pushButton_hex_select.setItemText(7, self._translate("TCP-UDP", "ADD16"))
 
     def connect(self):
         """

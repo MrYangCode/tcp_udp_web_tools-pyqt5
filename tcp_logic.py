@@ -1,3 +1,5 @@
+import datetime
+
 from PyQt5 import QtWidgets
 import tcp_udp_web_ui
 import socket
@@ -67,7 +69,7 @@ class TcpLogic(tcp_udp_web_ui.ToolsUi):
                 else:
                     if recv_msg:
                         msg = recv_msg.decode('utf-8')
-                        msg = '来自IP:{}端口:{}:\n{}\n'.format(address[0], address[1], msg)
+                        msg = '{}-来自IP:{}端口:{}:\n{}\n'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), address[0], address[1], msg)
                         self.signal_write_msg.emit(msg)
                     else:
                         client.close()

@@ -11,6 +11,7 @@ v2.0计划：
 使用布局，不使用绝对坐标；
 优化代码；
 """
+import datetime
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox, QFileDialog, QHBoxLayout, QVBoxLayout
@@ -215,7 +216,7 @@ class Ui_TCP(QDialog):
         self.label_rev.setText(self._translate("TCP-UDP", "接收区域"))
         self.label_send.setText(self._translate("TCP-UDP", "发送区域"))
         self.label_dir.setText(self._translate("TCP-UDP", "请选择index.html所在的文件夹"))
-        self.label_written.setText(self._translate("TCP-UDP", "Written by Wangler2333"))
+        self.label_written.setText(self._translate("TCP-UDP", "Written by "))
 
     def connect(self, ):
         """
@@ -442,7 +443,7 @@ class Ui_TCP(QDialog):
                 else:
                     if recv_msg:
                         msg = recv_msg.decode('utf-8')
-                        self.msg = '来自IP:{}端口:{}:\n{}\n'.format(address[0], address[1], msg)
+                        self.msg = '{}-来自IP:{}端口:{}:\n{}\n'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), address[0], address[1], msg)
                         self.signal_write_msg.emit("写入")
                     else:
                         client.close()
